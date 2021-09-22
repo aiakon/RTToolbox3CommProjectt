@@ -5,7 +5,6 @@ from kivy.uix.screenmanager import NoTransition
 import socket
 import threading
 
-
 class LoginWindow(Screen):
 
     def client_socket(self):
@@ -155,7 +154,7 @@ class MyApp(App):
     def build(self):
         global sm
 
-        Window.size = (360, 780)
+        #Window.size = (360, 780)
         sm = ScreenManager(transition=NoTransition())
         sm.add_widget(LoginWindow(name='login'))
         sm.add_widget(ClientWindow(name='client'))
