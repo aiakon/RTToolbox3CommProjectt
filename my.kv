@@ -1,0 +1,339 @@
+<Label>
+    size_hint: 0.1,0.1
+    font_size:17
+    color: 0,0,0,1
+<ProgressBar>
+    min:0
+    max:100
+<Button>
+    size_hint:0.26,0.1
+
+<LoginWindow>
+    name: "login"
+    ipv4:ipv4
+    port:port
+
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+    FloatLayout:
+
+
+        Label:
+            text: "IPv4:"
+            font_size: 19
+            pos_hint: {"x": 0.2, "top": 0.725}
+        TextInput:
+            id: ipv4
+            text: "192.168.1.10"
+            multiline: False
+            size_hint: 0.5,0.05
+            pos_hint: {"x": 0.35, "top": 0.7}
+
+        Label:
+            text: "Port:"
+            font_size: 19
+            pos_hint: {"x": 0.2, "top": 0.625}
+        TextInput:
+            id: port
+            text: "10006"
+            multiline: False
+            size_hint: 0.35,0.05
+            pos_hint: {"x": 0.35, "top": 0.6}
+
+        Button:
+            text:"Başlat"
+            size_hint: 0.65,0.075
+            pos_hint: {"x": 0.2, "top": 0.5}
+            on_release:
+                root.make_connection()
+        Button:
+            text:"Offline"
+            size_hint: 0.35,0.05
+            pos_hint: {"x": 0.35, "top": 0.425}
+            on_release:
+                app.root.current = "client"
+
+
+
+
+<ClientWindow>
+
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    FloatLayout:
+        Button:
+            text:"Baslat"
+            pos_hint: {"center_x":0.2 ,"top":0.98}
+            on_release:
+                root.baslat()
+        Button:
+            text:"Duraklat"
+            pos_hint: {"center_x":0.50 ,"top":0.98}
+            on_release:
+                root.duraklat()
+        Button:
+            text:"Durdur"
+            pos_hint: {"center_x":0.8 ,"top":0.98}
+            on_release:
+                root.durdur()
+
+        Label:
+            text:"J1:"
+            pos_hint: {"center_x":0.08 ,"top":0.89}
+        ProgressBar:
+            id: prog1
+            size_hint: 0.7,0.1
+            pos_hint: {"x":0.12 ,"top":0.886}
+            value:0
+        Label:
+            id: label1
+            text:"%0"
+            pos_hint: {"x":0.82 ,"top":0.89}
+
+
+        Label:
+            text:"J2:"
+            pos_hint: {"center_x":0.08 ,"top":0.845}
+        ProgressBar:
+            id: prog2
+            size_hint: 0.7,0.1
+            pos_hint: {"x":0.12 ,"top":0.841}
+            value:0
+        Label:
+            id: label2
+            text:"%0"
+            pos_hint: {"x":0.82 ,"top":0.845}
+
+
+
+        Label:
+            text:"J3:"
+            pos_hint: {"center_x":0.08 ,"top":0.80}
+        ProgressBar:
+            id: prog3
+            size_hint: 0.7,0.1
+            pos_hint: {"x":0.12 ,"top":0.796}
+            value: 0
+        Label:
+            id: label3
+            text:"%0"
+            pos_hint: {"x":0.82 ,"top":0.80}
+
+
+        Label:
+            text:"J4:"
+            pos_hint: {"center_x":0.08 ,"top":0.755}
+        ProgressBar:
+            id: prog4
+            size_hint: 0.7,0.1
+            pos_hint: {"x":0.12 ,"top":0.751}
+            value: 0
+        Label:
+            id: label4
+            text:"%0"
+            pos_hint: {"x":0.82 ,"top":0.755}
+
+
+        Label:
+            text:"J5:"
+            pos_hint: {"center_x":0.08 ,"top":0.71}
+        ProgressBar:
+            id: prog5
+            size_hint: 0.7,0.1
+            pos_hint: {"x":0.12 ,"top":0.706}
+            value:0
+        Label:
+            id: label5
+            text:"%0"
+            pos_hint: {"x":0.82 ,"top":0.71}
+
+
+        Label:
+            text:"J6:"
+            pos_hint: {"center_x":0.08 ,"top":0.665}
+        ProgressBar:
+            id: prog6
+            size_hint: 0.7,0.1
+            pos_hint: {"x":0.12 ,"top":0.661}
+            value:0
+        Label:
+            id: label6
+            text:"%0"
+            pos_hint: {"x":0.82 ,"top":0.665}
+
+        Label:
+            text:"YAPILAN ÜRÜN:"
+            pos_hint: {"center_x":0.5 ,"top":0.61}
+        TextInput:
+            id: textinput1
+            text:"0"
+            size_hint: 0.15,0.04
+            pos_hint: {"center_x":0.76 ,"top":0.58}
+            ## readonly: True
+            disabled: True
+
+        TextInput:
+            id : textinput2
+            text:""
+            size_hint:0.9,0.33
+            pos_hint:{"x":0.05,"y":0.17}
+            font_size:16
+            disabled: True
+
+        Button:
+            text:"Yönlendir"
+            size_hint:0.5,0.075
+            on_release:
+                root.command_mode()
+
+        Button:
+            text:"Dinle"
+            size_hint:0.5,0.075
+            pos_hint:{"x":0.5}
+
+<CommandWindow>
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+    FloatLayout:
+
+    Label:
+        text:"J1:"
+        pos_hint:{"x":0.15, "y":0.77}
+
+    Button:
+        text:"+"
+        font_size:20
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.1, "y":0.7}
+        on_release:
+            root.j1up()
+    Button:
+        text:"-"
+        font_size:30
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.1, "y":0.6}
+        on_release:
+            root.j1down()
+
+    Label:
+        text:"J2:"
+        pos_hint:{"x":0.45, "y":0.77}
+
+    Button:
+        text:"+"
+        font_size:20
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.4, "y":0.7}
+        on_release:
+            root.j2up()
+    Button:
+        text:"-"
+        font_size:30
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.4, "y":0.6}
+        on_release:
+            root.j2down()
+
+    Label:
+        text:"J3:"
+        pos_hint:{"x":0.75, "y":0.77}
+
+    Button:
+        text:"+"
+        font_size:20
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.7, "y":0.7}
+        on_release:
+            root.j3up()
+    Button:
+        text:"-"
+        font_size:30
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.7, "y":0.6}
+        on_release:
+            root.j3down()
+
+    Label:
+        text:"J4:"
+        pos_hint:{"x":0.15, "y":0.42}
+
+    Button:
+        text:"+"
+        font_size:20
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.1, "y":0.35}
+        on_release:
+            root.j4up()
+    Button:
+        text:"-"
+        font_size:30
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.1, "y":0.25}
+        on_release:
+            root.j4down()
+
+    Label:
+        text:"J5:"
+        pos_hint:{"x":0.45, "y":0.42}
+
+    Button:
+        text:"+"
+        font_size:20
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.4, "y":0.35}
+        on_release:
+            root.j5up()
+    Button:
+        text:"-"
+        font_size:30
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.4, "y":0.25}
+        on_release:
+            root.j5down()
+
+    Label:
+        text:"J6:"
+        pos_hint:{"x":0.75, "y":0.42}
+
+    Button:
+        text:"+"
+        font_size:20
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.7, "y":0.35}
+        on_release:
+            root.j6up()
+    Button:
+        text:"-"
+        font_size:30
+        size_hint:0.2,0.1
+        pos_hint:{"x":0.7, "y":0.25}
+        on_release:
+            root.j6down()
+
+
+    Button:
+        text:"Yönlendir"
+        size_hint:0.5,0.075
+        on_release:
+            root.master_mode()
+
+    Button:
+        text:"Dinle"
+        size_hint:0.5,0.075
+        pos_hint:{"x":0.5}
+        on_release:
+            root.client_mode()
